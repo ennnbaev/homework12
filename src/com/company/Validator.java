@@ -2,18 +2,14 @@ package com.company;
 
 public class Validator {
     public static void checkSalary(double salary) throws TooSmallSalaryException {
-            if (salary > 0) {
-                return;
+            if (salary < 0) {
+                throw new TooSmallSalaryException(salary);
             }
-            throw new TooSmallSalaryException(salary);
-
     }
-
     public static void checkFio(String input) throws ImpossibleNameException {
         String regex = "[A-z]*";
-        if (input.matches(regex)) {
-            return;
+        if (!input.matches(regex)) {
+            throw new ImpossibleNameException(input);
         }
-        throw new ImpossibleNameException(input);
     }
 }
